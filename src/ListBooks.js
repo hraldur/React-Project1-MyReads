@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom'
 
 
 class ListBooks extends React.Component {
+	// get book image if exists
+	getImg = (book) => {
+		if(book.imageLinks){
+			return `url(${book.imageLinks.thumbnail})`
+		}
+		else {
+
+			return ''}
+	}
+
 	render() {
 		return (
 			<div className="list-books">
@@ -22,7 +32,7 @@ class ListBooks extends React.Component {
                       <li key={book.id}>
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: this.getImg(book) }}></div>
                             <div className="book-shelf-changer">
                               <select value="currentlyReading" onChange={(event)=>this.props.updateShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>
@@ -52,7 +62,7 @@ class ListBooks extends React.Component {
                       <li key={book.id}>
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: this.getImg(book) }}></div>
                             <div className="book-shelf-changer">
                               <select value="wantToRead" onChange={(event)=>this.props.updateShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>
@@ -81,7 +91,7 @@ class ListBooks extends React.Component {
                       <li key={book.id}>
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                            <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: this.getImg(book) }}></div>
                             <div className="book-shelf-changer">
                               <select value="read" onChange={(event)=>this.props.updateShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>

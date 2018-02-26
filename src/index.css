@@ -8,4 +8,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+ background-color: #fcfbf9;
+}
+h1 {
+	font-family: 'Raleway', sans-serif;
 }

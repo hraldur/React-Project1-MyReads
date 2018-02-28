@@ -1,6 +1,7 @@
 // Libs
 import React from "react";
 import { Link } from "react-router-dom";
+import * as _ from "underscore";
 
 // Components
 import * as BooksAPI from "./BooksAPI";
@@ -69,7 +70,10 @@ class SearchBooks extends React.Component {
               placeholder="Search by title or author"
               value={this.state.query}
               onChange={event =>
-                this.handleChange(event.target.value, this.props.books)
+                _.debounce(
+                  this.handleChange(event.target.value, this.props.books),
+                  500
+                )
               }
             />
           </div>

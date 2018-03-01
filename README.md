@@ -7,6 +7,5 @@ MyReads is a bookshelf app that allows you to select and categorize books you ha
 ```git clone https://github.com/hraldur/React-Project1-MyReads.git
 cd MyReads
 npm install
-npm install underscore
 npm start
 ```

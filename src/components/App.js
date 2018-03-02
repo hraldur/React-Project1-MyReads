@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     this.bookShelf();
-  }
+  };
 
   bookShelf() {
     BooksAPI.getAll().then(books => {
@@ -31,17 +31,11 @@ class BooksApp extends React.Component {
         read: books.filter(book => book.shelf === "read")
       });
     });
-  }
+  };
 
   handleBookShelfChange = (book, shelf) => {
     if (book.shelf !== shelf) {
-      BooksAPI.update(book, shelf).then(() => {
-        book.shelf = shelf;
-
-        this.setState(state => ({
-          books: state.books.filter(b => b.id !== book.id).concat([book])
-        }));
-      });
+      BooksAPI.update(book, shelf).then(books => this.bookShelf());
     }
   };
 
